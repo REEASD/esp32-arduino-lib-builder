@@ -26,9 +26,18 @@ In comparison to the original [esp32-arduino-lib-builder](https://github.com/esp
   * For ESP32-S3 SoCs:
     * All:
         * It changes the optimization level from `-Os` to `-O2` by enabling `CONFIG_COMPILER_OPTIMIZATION_PERF=y`.
-        * It increases the size of the data cache line from `32` to `64` by enabling `CONFIG_ESP32S3_DATA_CACHE_LINE_64B=y`.
+        * It increases the size of the data cache line width from `32` to `64` by enabling `CONFIG_ESP32S3_DATA_CACHE_LINE_64B=y`.
     * For ESP32-S3R8 (Octal PSRAM):
-        * It enables the function **XIP on PSRAM** by enabling `CONFIG_SPIRAM_FETCH_INSTRUCTIONS=y` and `CONFIG_SPIRAM_RODATA=y`.
+        * It enables the function **XIP on PSRAM** by enabling `CONFIG_SPIRAM_FETCH_INSTRUCTIONS=y` and `CONFIG_SPIRAM_RODATA=y` (< v3.1.1).
+        * It enables the function **XIP on PSRAM** by enabling `CONFIG_SPIRAM_XIP_FROM_PSRAM=y` (>= v3.1.1).
+
+  * For ESP32-P4 SoCs:
+    * All:
+      * It increases the size of the L2 cache line width from `64` to `128` by enabling `CONFIG_CACHE_L2_CACHE_LINE_128B=y`.
+      * It increases the size of the L2 cache line size from `128KB` to `256KB` by enabling `CONFIG_CACHE_L2_CACHE_256KB=y`.
+
+> [!WARNING]
+> For the ESP32-P4 in version v3.1.1, enabling `CONFIG_COMPILER_OPTIMIZATION_PERF=y` and `CONFIG_SPIRAM_XIP_FROM_PSRAM=y` will cause the chip to fail to boot properly.
 
 ## Branches
 
@@ -38,6 +47,7 @@ In comparison to the original [esp32-arduino-lib-builder](https://github.com/esp
 * [release/v3.0.0-alpha3](https://github.com/esp-arduino-libs/esp32-arduino-lib-builder/tree/release/v3.0.0-alpha3)
 * [release/v3.0.0](https://github.com/esp-arduino-libs/esp32-arduino-lib-builder/tree/release/v3.0.0)
 * [release/v3.0.2](https://github.com/esp-arduino-libs/esp32-arduino-lib-builder/tree/release/v3.0.2)
+* [release/v3.1.1](https://github.com/esp-arduino-libs/esp32-arduino-lib-builder/tree/release/v3.1.1)
 
 ### High Performance Versions
 
@@ -46,6 +56,7 @@ As only v3.x and above versions support the required high-performance configurat
 * [high_perf/v3.0.0-alpha3](https://github.com/esp-arduino-libs/esp32-arduino-lib-builder/tree/high_perf/v3.0.0-alpha3)
 * [high_perf/v3.0.0](https://github.com/esp-arduino-libs/esp32-arduino-lib-builder/tree/high_perf/v3.0.0)
 * [high_perf/v3.0.2](https://github.com/esp-arduino-libs/esp32-arduino-lib-builder/tree/high_perf/v3.0.2)
+* [high_perf/v3.1.1](https://github.com/esp-arduino-libs/esp32-arduino-lib-builder/tree/high_perf/v3.1.1)
 
 > [!TIP]
 > [Precompiled SDKs](https://github.com/esp-arduino-libs/arduino-esp32-sdk?tab=readme-ov-file#for-sdks-suffixed-with--h)
